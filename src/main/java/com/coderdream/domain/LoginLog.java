@@ -3,7 +3,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class LoginLog implements Serializable{
-	private int loginLogId;
+	/**  */
+    private static final long serialVersionUID = -426338504338788212L;
+
+    private int loginLogId;
 
 	private int userId;
 
