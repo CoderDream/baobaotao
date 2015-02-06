@@ -8,7 +8,8 @@ import com.coderdream.dao.UserDao;
 import com.coderdream.domain.LoginLog;
 import com.coderdream.domain.User;
 
-@Service // 将UserService标注为一个服务层的Bean
+@Service
+// 将UserService标注为一个服务层的Bean
 public class UserService {
 
     @Autowired
@@ -19,9 +20,6 @@ public class UserService {
 
     public boolean hasMatchUser(String userName, String password) {
         int matchCount = userDao.getMatchCount(userName, password);
-        org.springframework.orm.hibernate3.HibernateTransactionManager a = null;
-        //org.hibernate.dialect.MySQLDialect d  =null;
-        org.hibernate.dialect.MySQL5Dialect d  =null;
         return matchCount > 0;
     }
 
