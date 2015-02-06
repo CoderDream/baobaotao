@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.coderdream.domain.User;
 
-@Repository
+@Repository // （1）通过Spring注解定义一个DAO
 public class UserDao {
 
-    @Autowired
+    @Autowired // （2）自动注入JdbcTemplate的Bean
     private JdbcTemplate jdbcTemplate;
 
     public int getMatchCount(String userName, String password) {

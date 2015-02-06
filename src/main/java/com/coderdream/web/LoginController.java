@@ -18,6 +18,15 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    private ModelAndView mav = null;
+
+    @RequestMapping("")
+    public ModelAndView init() {
+        mav = new ModelAndView();
+        mav.setViewName("login");
+        return mav;
+    }
+
     @RequestMapping(value = "/index.html")
     public String loginPage() {
         return "login";
@@ -26,6 +35,22 @@ public class LoginController {
     @RequestMapping(value = "/loginCheck.html")
     public ModelAndView loginCheck(HttpServletRequest request,
             LoginCommand loginCommand) {
+//        String userName = loginCommand.getUserName();
+//        String password = loginCommand.getPassword();
+//
+//        boolean isValidUser = false;
+//
+//        if ("admin".equals(userName) && "1234".equals(password)) {
+//            isValidUser = true;
+//        }
+//        // userService.hasMatchUser(
+//        // loginCommand.getUserName(), loginCommand.getPassword());
+//        if (!isValidUser) {
+//            return new ModelAndView("login", "error", "用户名或密码错误。");
+//        } else {
+//            return new ModelAndView("main");
+//        }
+        
         boolean isValidUser = userService.hasMatchUser(
                 loginCommand.getUserName(), loginCommand.getPassword());
         if (!isValidUser) {
